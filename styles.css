@@ -1,0 +1,72 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/purpleSky.jpeg');
+    background-size: cover;
+    opacity: 65%;
+    animation: moveBackground 20s linear infinite;
+    z-index: -1; /* Push the background behind the content */
+  }
+  
+  @keyframes moveBackground {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    height: 100vh;
+    z-index: 1; /* Keep the content above the background */
+  }
+  
+  .box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*border: 1px solid #000;*/
+    font-size: 24px;
+  }
+  
+  .inner-box {
+    position: absolute;
+    width: calc(85% - 20px);
+    height: calc(85% - 20px);
+    margin: 10px;
+    background-color: transparent;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .inner-box img {
+    width: 80%;
+    height: 80%;
+    opacity: 70%;
+    object-fit: contain; /* Maintain aspect ratio and cover the box */
+    transition: transform 0.7s ease-in-out; /* Animation duration and easing */
+  }
+
+  .inner-box img.clicked {
+    transform: scale(1.4); /* Slightly larger scale when clicked */
+  }
